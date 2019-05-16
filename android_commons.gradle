@@ -1,0 +1,33 @@
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Version.compileVersion
+
+    defaultConfig {
+        minSdkVersion Version.minVersion
+        targetSdkVersion Version.targetVersion
+
+        versionCode Release.versionCode
+        versionName Release.versionName
+    }
+
+    compileOptions {
+        sourceCompatibility Version.javaVersion
+        targetCompatibility Version.javaVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+        }
+    }
+}
+
+dependencies {
+    // Kotlin
+    implementation Kotlin.kotlin
+
+    // Support
+    implementation Libraries.appCompact
+    implementation Libraries.coreKtx
+}
