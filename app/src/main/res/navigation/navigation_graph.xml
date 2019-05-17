@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/nav_graph">
-
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/nav_graph"
+	app:startDestination="@id/genreListFragment">
+	
+	<fragment
+		android:id="@+id/genreListFragment"
+		android:name="magym.feature.genrelist.GenreListFragment"
+		android:label="GenreListFragment">
+		<action
+			android:id="@+id/action_genreListFragment_to_genreTabFragment"
+			app:destination="@id/genreTabFragment"/>
+	</fragment>
+	
+	<fragment
+		android:id="@+id/genreTabFragment"
+		android:name="magym.feature.genretablist.GenreTabFragment"
+		android:label="GenreTabFragment"/>
 
 </navigation>

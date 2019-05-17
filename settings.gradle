@@ -1,1 +1,1 @@
-include ':app', ':common'
+include ':app', ':core-common', ':core-data', ':feature-genretab', ':feature-audiodetail', ':feature-service', ':feature-genrelist', ':feature-audiolist'

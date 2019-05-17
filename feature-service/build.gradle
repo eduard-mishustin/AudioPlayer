@@ -1,0 +1,11 @@
+apply plugin: 'com.android.library'
+apply from: '../android_commons.gradle'
+
+dependencies {
+    // Module
+    implementation project(Module.coreCommon)
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.9.4'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.10.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.0'
+}

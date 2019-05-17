@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+apply from: '../android_commons.gradle'
+apply from: '../android_test_dependencies.gradle'
+apply plugin: 'kotlin-kapt'
+
+android {
+    defaultConfig {
+        buildConfigField "String", "BASE_URL", "\"https://muzlo.me/\""
+    }
+}
+
+dependencies {
+    // Module
+    implementation project(Module.coreCommon)
+
+    // Network
+    implementation Libraries.gson
+    implementation Libraries.jsoup
+}

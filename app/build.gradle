@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
 apply from: '../android_commons.gradle'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 
 android {
     defaultConfig {
@@ -10,39 +8,16 @@ android {
 }
 
 dependencies {
-    // UI
-    implementation Libraries.material
-    implementation Libraries.constraintLayout
-    implementation Libraries.recycler
+    // Module
+    implementation project(Module.coreCommon)
+    implementation project(Module.coreData)
+    implementation project(Module.featureService)
+    implementation project(Module.featureGenreList)
+    implementation project(Module.featureGenreTab)
+    implementation project(Module.featureAudioList)
+    implementation project(Module.featureAudioDetail)
 
     // Navigation
     implementation Libraries.navigationFragment
     implementation Libraries.navigationUi
-
-    // DI
-    implementation Libraries.koin
-    implementation Libraries.koinViewModel
-
-    // Network
-    implementation Libraries.retrofit
-    implementation Libraries.retrofitRxAdapter
-    implementation Libraries.retrofitXmlConverter
-
-    // Rx
-    implementation Libraries.rxJava
-    implementation Libraries.rxKotlin
-    implementation Libraries.rxAndroid
-
-    // Livecycle
-    implementation Libraries.lifecycle
-
-    // Database
-    implementation Libraries.room
-    kapt Libraries.roomCompiler
-    implementation Libraries.stetho
-
-    // Utils
-    implementation Libraries.timeAgo
-    implementation Libraries.glide
-    implementation Libraries.photoView
 }
