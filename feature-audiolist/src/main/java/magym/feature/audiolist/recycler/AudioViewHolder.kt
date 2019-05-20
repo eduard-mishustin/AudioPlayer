@@ -18,7 +18,7 @@ class AudioViewHolder(
 
 	@SuppressLint("SetTextI18n")
 	override fun bind(item: Audio) {
-		title.text = "${item.group} – ${item.name}"
+		title.text = "${item.artist} – ${item.title}"
 	}
 	
 }

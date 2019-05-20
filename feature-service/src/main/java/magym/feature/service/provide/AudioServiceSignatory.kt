@@ -25,17 +25,17 @@ class AudioServiceSignatory(
 			serviceConnection.serviceDisconnected()
 		}
 	}
-
+	
 	//@OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
 	fun start() {
 		context.startService(serviceIntent)
 	}
-
+	
 	//@OnLifecycleEvent(Lifecycle.Event.ON_START)
 	fun bind() {
 		context.bindService(serviceIntent, connection, 0)
 	}
-
+	
 	//@OnLifecycleEvent(Lifecycle.Event.ON_STOP)
 	fun unbind() {
 		serviceConnection.serviceDisconnected()

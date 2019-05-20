@@ -15,4 +15,4 @@ fun Resources.getColorCompat(@ColorRes id: Int): Int {
 	return ResourcesCompat.getColor(this, id, null)
 }
 
-fun isOreo() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+fun isOreoOrMore() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O

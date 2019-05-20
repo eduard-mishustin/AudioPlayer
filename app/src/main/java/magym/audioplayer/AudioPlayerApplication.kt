@@ -5,8 +5,8 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import magym.core.common.extention.appName
-import magym.core.common.extention.isOreo
-import magym.feature.service.AudioNotificationManager.Companion.CHANNEL_ID
+import magym.core.common.extention.isOreoOrMore
+import magym.feature.service.AudioService.Companion.CHANNEL_ID
 import org.koin.android.ext.android.startKoin
 
 class AudioPlayerApplication : Application() {
@@ -23,7 +23,7 @@ class AudioPlayerApplication : Application() {
 
 
 	private fun createNotificationChannel() {
-		if (!isOreo()) return
+		if (!isOreoOrMore()) return
 		
 		val channel = NotificationChannel(CHANNEL_ID, appName, NotificationManager.IMPORTANCE_LOW).apply {
 			//setShowBadge(false)

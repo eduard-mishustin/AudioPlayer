@@ -21,6 +21,10 @@ private const val rxAndroidVersion = "2.1.0"
 private const val lifecycleVersion = "1.1.1"
 private const val roomVersion = "1.1.1"
 private const val stethoVersion = "1.5.0"
+private const val exoplayerVersion = "2.9.4"
+private const val exoplayerCoreVersion = "2.10.0"
+private const val mediaVersion = "1.0.1"
+private const val mediarouterVersion = "1.0.0"
 private const val timeAgoVersion = "3.0.2"
 private const val glideVersion = "4.9.0"
 private const val photoViewVersion = "2.1.3"
@@ -110,6 +114,13 @@ object Libraries {
 	const val room = "android.arch.persistence.room:runtime:$roomVersion"
 	const val roomCompiler = "android.arch.persistence.room:compiler:$roomVersion"
 	const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
+	
+	// Audio
+	const val exoplayer = "com.google.android.exoplayer:exoplayer:$exoplayerVersion"
+	const val exoplayerCore = "com.google.android.exoplayer:exoplayer-core:$exoplayerCoreVersion"
+	const val exoplayerUi = "com.google.android.exoplayer:exoplayer-ui:$exoplayerCoreVersion"
+	const val media = "androidx.media:media:$mediaVersion"
+	const val mediarouter = "androidx.mediarouter:mediarouter:$mediarouterVersion"
 	
 	// Utils
 	const val timeAgo = "com.github.marlonlom:timeago:$timeAgoVersion"

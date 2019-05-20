@@ -45,7 +45,7 @@ class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, Audio
     }
 
 	private fun onItemClick(audio: Audio) {
-		postIntent(AudioListIntent.PlayAudio(audio.url))
+		postIntent(AudioListIntent.PlayAudio(audio))
 	}
 	
 	companion object {

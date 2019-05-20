@@ -21,8 +21,8 @@ class AudioListViewModel(
                 .map<AudioListAction> { AudioListAction.AudiosReceived(it) }
                 .startWith(AudioListAction.LoadDataStarted)
                 .onErrorReturn { AudioListAction.LoadDataFailed(it) }
-
-            is AudioListIntent.PlayAudio -> Completable.fromAction { serviceRepository.playAudio(intent.audioUrl) }
+    
+            is AudioListIntent.PlayAudio -> Completable.fromAction { serviceRepository.playAudio(intent.audio) }
                 .andThen(super.act(state, intent))
         }
 
