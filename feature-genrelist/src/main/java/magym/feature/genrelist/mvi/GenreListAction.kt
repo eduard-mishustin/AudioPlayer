@@ -2,7 +2,7 @@ package magym.feature.genrelist.mvi
 
 import magym.core.data.data.entity.Genre
 
-sealed class GenreListAction {
+internal sealed class GenreListAction {
 	
 	object LoadDataStarted : GenreListAction()
 	

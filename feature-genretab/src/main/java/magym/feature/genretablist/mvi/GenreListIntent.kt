@@ -1,6 +1,6 @@
 package magym.feature.genretablist.mvi
 
-sealed class GenreListIntent {
+internal sealed class GenreListIntent {
 	
 	object LoadData : GenreListIntent()
 	

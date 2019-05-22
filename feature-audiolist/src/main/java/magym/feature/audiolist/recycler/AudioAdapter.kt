@@ -5,7 +5,7 @@ import magym.core.common.recycler.BaseAdapter
 import magym.core.data.data.entity.Audio
 import magym.feature.audiolist.R
 
-class AudioAdapter(
+internal class AudioAdapter(
 	private val onClick: (Audio) -> Unit
 ) : BaseAdapter<Audio, AudioViewHolder>() {
 	

@@ -6,7 +6,7 @@ import magym.core.common.extention.onClick
 import magym.core.common.recycler.BaseViewHolder
 import magym.core.data.data.entity.Genre
 
-class GenreViewHolder(
+internal class GenreViewHolder(
 	containerView: View,
 	private val onClick: (Int) -> Unit
 ) : BaseViewHolder<Genre>(containerView) {

@@ -1,4 +1,4 @@
-package magym.feature.service
+package magym.feature.service.util
 
 import android.content.Context
 import android.support.v4.media.MediaMetadataCompat
@@ -12,7 +12,7 @@ import androidx.media.session.MediaButtonReceiver
  * Заполняет уведомление метаданными трека.
  * https://gist.github.com/ianhanniballake/47617ec3488e0257325c
  */
-object MediaStyleHelper {
+internal object MediaStyleHelper {
 	/**
 	 * Build a notification using the information from the given media session. Makes heavy use
 	 * of [MediaMetadataCompat.getDescription] to extract the appropriate information.

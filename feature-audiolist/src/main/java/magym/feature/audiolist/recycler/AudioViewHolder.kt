@@ -7,7 +7,7 @@ import magym.core.common.extention.onClick
 import magym.core.common.recycler.BaseViewHolder
 import magym.core.data.data.entity.Audio
 
-class AudioViewHolder(
+internal class AudioViewHolder(
 	containerView: View,
 	private val onClick: (Int) -> Unit
 ) : BaseViewHolder<Audio>(containerView) {

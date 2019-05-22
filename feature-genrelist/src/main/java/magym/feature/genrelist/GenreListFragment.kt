@@ -12,29 +12,30 @@ import magym.feature.genrelist.mvi.GenreListViewState
 import magym.feature.genrelist.recycler.GenreAdapter
 import org.koin.android.ext.android.get
 
-class GenreListFragment :
+internal class GenreListFragment :
 	MviFragment<GenreListIntent, GenreListViewState, GenreListSubscription>() {
-
+	
 	override val layoutId = R.layout.fragment_genres
-
+	
 	private val adapter: GenreAdapter = GenreAdapter(::onItemClick)
-
-
+	
+	
 	override fun provideViewModel(): GenreListViewModel = get()
-
+	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-
-		postIntent(GenreListIntent.LoadData)
+		
+		if (savedInstanceState == null) postIntent(GenreListIntent.LoadData)
+		
 		activityProvider.titleToolbar = "Жанры"
 		recycler_view.init(adapter)
 	}
-
+	
 	override fun render(state: GenreListViewState) {
 		activityProvider.isLoading = state.isLoading
 		adapter.items = state.genres
 	}
-
+	
 	override fun onSubscriptionReceived(subscription: GenreListSubscription) {
 		when (subscription) {
 			is GenreListSubscription.RemoteRequestError -> {
@@ -42,10 +43,10 @@ class GenreListFragment :
 			}
 		}
 	}
-
-
+	
+	
 	private fun onItemClick(genre: Genre) {
 		navigation.toAudioList(genre.id)
 	}
-
+	
 }

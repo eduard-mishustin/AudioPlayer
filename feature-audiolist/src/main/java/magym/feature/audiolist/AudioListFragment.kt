@@ -22,7 +22,7 @@ class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, Audio
 	private val adapter: AudioAdapter = AudioAdapter(::onItemClick)
 	
 	override fun provideViewModel(): AudioListViewModel = get()
-
+	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		checkArguments(KEY_GENRE_ID)
@@ -35,15 +35,15 @@ class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, Audio
 		activityProvider.isLoading = state.isLoading
 		adapter.items = state.audios
 	}
-
-    override fun onSubscriptionReceived(subscription: AudioListSubscription) {
-        when (subscription) {
+	
+	override fun onSubscriptionReceived(subscription: AudioListSubscription) {
+		when (subscription) {
 			is AudioListSubscription.RemoteRequestError -> {
 				layout.showErrorSnackBarWithAction { postIntent(AudioListIntent.LoadData(genreId)) }
 			}
-        }
-    }
-
+		}
+	}
+	
 	private fun onItemClick(audio: Audio) {
 		postIntent(AudioListIntent.PlayAudio(audio))
 	}

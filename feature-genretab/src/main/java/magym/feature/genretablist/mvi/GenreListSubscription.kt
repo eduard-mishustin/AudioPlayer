@@ -1,6 +1,6 @@
 package magym.feature.genretablist.mvi
 
-sealed class GenreListSubscription {
+internal sealed class GenreListSubscription {
 	
 	class ChangePageSelected(val index: Int) : GenreListSubscription()
 	

@@ -6,8 +6,8 @@ import org.junit.Assert
 import org.junit.Test
 
 class AudioRepositoryTest {
-
-	// todo Убрать нетворк, использовать mokk
+	
+	// todo Убрать нетворк, подставлять дефолтную страницу для парсинга
 	
 	private val parser = AudioParser()
 	private val provider = AudioProvider(parser)

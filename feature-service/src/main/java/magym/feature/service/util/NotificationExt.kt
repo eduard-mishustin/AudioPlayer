@@ -8,10 +8,9 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.media.session.MediaButtonReceiver.buildMediaButtonPendingIntent
 import magym.feature.service.AudioService.Companion.CHANNEL_ID
-import magym.feature.service.MediaStyleHelper
 import magym.feature.service.R
 
-fun Context.createAudioPlayerNotification(
+internal fun Context.createAudioPlayerNotification(
 	playbackState: Int,
 	mediaSession: MediaSessionCompat
 ): Notification = MediaStyleHelper.from(this, mediaSession).apply {

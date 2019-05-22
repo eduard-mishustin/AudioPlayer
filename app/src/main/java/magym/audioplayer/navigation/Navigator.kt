@@ -7,13 +7,13 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import magym.audioplayer.R
 import magym.core.common.AudioPlayerNavigation
-import magym.feature.genretablist.GenreTabFragment.Companion.KEY_GENRE_ID
+import magym.core.common.KEY_GENRE_ID
 
-class Navigator : AudioPlayerNavigation {
+internal class Navigator : AudioPlayerNavigation {
 	
 	private var navController: NavController? = null
-
-
+	
+	
 	override fun toAudioList(genreId: Int) {
 		navController?.navigateWithPop(
 			R.id.genreTabFragment,
@@ -24,15 +24,15 @@ class Navigator : AudioPlayerNavigation {
 	override fun toAudioDetail(audioId: Int) {
 		/*navController?.navigateWithPop(
 			R.id.,
-			bundleOf(Pair(, audioId))
+			bundleOf(Pair(KEY_AUDIO_ID, audioId))
 		)*/
 	}
 	
 	override fun onBackPressed() {
 		navController?.navigateUp()
 	}
-
-
+	
+	
 	fun bind(navController: NavController) {
 		this.navController = navController
 	}
@@ -40,8 +40,8 @@ class Navigator : AudioPlayerNavigation {
 	fun unbind() {
 		navController = null
 	}
-
-
+	
+	
 	private companion object {
 		
 		private fun NavController.navigateWithPop(
