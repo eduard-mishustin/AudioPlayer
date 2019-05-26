@@ -9,6 +9,6 @@ internal interface AudioParserApi {
 	
 	fun getGenres(): List<Genre>
 	
-	fun getAudios(genreId: Int): List<Audio>
+	fun getAudios(genreId: Int, page: Int = 0): List<Audio>
 	
 }

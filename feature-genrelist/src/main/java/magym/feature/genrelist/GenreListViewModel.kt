@@ -2,7 +2,7 @@ package magym.feature.genrelist
 
 import io.reactivex.Observable
 import magym.core.common.mvi.MviViewModel
-import magym.core.data.domain.GenreRepository
+import magym.core.data.domain.repository.GenreRepository
 import magym.feature.genrelist.mvi.GenreListAction
 import magym.feature.genrelist.mvi.GenreListIntent
 import magym.feature.genrelist.mvi.GenreListSubscription

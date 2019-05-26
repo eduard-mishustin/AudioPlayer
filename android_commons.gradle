@@ -44,6 +44,8 @@ dependencies {
     implementation Libraries.material
     implementation Libraries.constraintLayout
     implementation Libraries.recycler
+    implementation Libraries.paging
+    implementation Libraries.pagingRx
 
     // DI
     implementation Libraries.koin

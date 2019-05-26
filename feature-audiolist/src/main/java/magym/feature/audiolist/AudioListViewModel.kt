@@ -3,7 +3,7 @@ package magym.feature.audiolist
 import io.reactivex.Completable
 import io.reactivex.Observable
 import magym.core.common.mvi.MviViewModel
-import magym.core.data.domain.AudioRepository
+import magym.core.data.domain.repository.AudioRepository
 import magym.feature.audiolist.mvi.AudioListAction
 import magym.feature.audiolist.mvi.AudioListIntent
 import magym.feature.audiolist.mvi.AudioListSubscription

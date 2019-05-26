@@ -10,11 +10,12 @@ import org.jsoup.nodes.Element
 
 internal class AudioParser : AudioParserApi {
 	
-	override fun getAudios(genreId: Int) = getDocument(BASE_URL + GENRE_PATH + genreId)
+	override fun getAudios(genreId: Int, page: Int) = getDocument(BASE_URL + GENRE_PATH + genreId + PAGES_PATH + page)
 		.getElementsByClass("playlist-item")
-		.map {
+		.mapIndexed { index, it ->
 			Audio(
 				id = it.id,
+				index = page + index,
 				genreId = genreId,
 				title = it.getElementsByClass("playlist-item-title").text(),
 				artist = it.getElementsByClass("playlist-item-subtitle").text(),
@@ -45,6 +46,8 @@ internal class AudioParser : AudioParserApi {
 		private const val GENRE_PATH = "genre/"
 		
 		private const val GENRES_PATH = "genres"
+		
+		private const val PAGES_PATH = "/start/"
 		
 		private val Element.id
 			get() = select("a").first()

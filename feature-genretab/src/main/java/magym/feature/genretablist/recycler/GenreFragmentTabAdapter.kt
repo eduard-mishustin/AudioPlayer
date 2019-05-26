@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import magym.core.common.recycler.EntityDiffCallback
+import magym.core.common.recycler.simple.EntityDiffCallback
 import magym.core.data.data.entity.Genre
 import magym.feature.audiolist.AudioListFragment
 

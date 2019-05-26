@@ -9,6 +9,7 @@ data class Audio(
 	@PrimaryKey
 	override val id: Int,
 	
+	val index: Int,
 	val genreId: Int,
 	val title: String,
 	val artist: String,

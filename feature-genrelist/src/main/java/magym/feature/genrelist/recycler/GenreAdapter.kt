@@ -1,7 +1,7 @@
 package magym.feature.genrelist.recycler
 
 import android.view.View
-import magym.core.common.recycler.BaseAdapter
+import magym.core.common.recycler.simple.BaseAdapter
 import magym.core.data.data.entity.Genre
 import magym.feature.genrelist.R
 

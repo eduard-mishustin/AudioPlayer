@@ -10,7 +10,7 @@ import magym.core.data.data.entity.Genre
 @Dao
 internal interface GenreDao : BaseDao<Genre> {
 	
-	@Query("SELECT * FROM Genre WHERE title LIKE :filterQuery")
+	@Query("SELECT * FROM Genre WHERE title LIKE :filterQuery ORDER BY title")
 	fun getGenres(filterQuery: String): Observable<List<Genre>>
 	
 	@Query("SELECT * FROM Genre WHERE id = :id")

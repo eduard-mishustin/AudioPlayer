@@ -33,7 +33,7 @@ class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, Audio
 	
 	override fun render(state: AudioListViewState) {
 		activityProvider.isLoading = state.isLoading
-		adapter.items = state.audios
+		adapter.submitList(state.audios)
 	}
 	
 	override fun onSubscriptionReceived(subscription: AudioListSubscription) {

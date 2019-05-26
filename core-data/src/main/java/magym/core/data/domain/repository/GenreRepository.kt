@@ -1,4 +1,4 @@
-package magym.core.data.domain
+package magym.core.data.domain.repository
 
 import io.reactivex.Observable
 import magym.core.data.data.entity.Genre

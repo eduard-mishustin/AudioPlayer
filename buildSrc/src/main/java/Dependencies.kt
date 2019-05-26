@@ -9,6 +9,7 @@ private const val materialVersion = "1.1.0-alpha05"
 private const val constraintLayoutVersion = "1.1.3"
 private const val recyclerVersion = "1.0.0"
 private const val viewpager2Version = "1.0.0-alpha04"
+private const val pagingVersion = "2.1.0"
 private const val navigationVersion = "2.1.0-alpha02"
 private const val gsonVersion = "2.8.5"
 private const val jsoupVersion = "1.11.2"
@@ -88,6 +89,8 @@ object Libraries {
 	const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 	const val recycler = "androidx.recyclerview:recyclerview:$recyclerVersion"
 	const val viewpager2 = "androidx.viewpager2:viewpager2:$viewpager2Version"
+	const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
+	const val pagingRx = "androidx.paging:paging-rxjava2-ktx:$pagingVersion"
 	
 	// Navigation
 	const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
