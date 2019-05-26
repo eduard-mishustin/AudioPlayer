@@ -1,0 +1,15 @@
+apply plugin: 'com.android.library'
+apply from: '../android_commons.gradle'
+
+dependencies {
+    // Module
+    implementation project(Module.coreCommon)
+    implementation project(Module.coreData)
+
+    // Audio
+    implementation Libraries.exoplayer
+    implementation Libraries.exoplayerCore
+    implementation Libraries.exoplayerUi
+    implementation Libraries.media
+    implementation Libraries.mediarouter
+}

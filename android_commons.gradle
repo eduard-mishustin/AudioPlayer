@@ -1,3 +1,4 @@
+apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -17,9 +18,17 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+        }
+
         release {
             minifyEnabled true
         }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 }
 
@@ -28,6 +37,20 @@ dependencies {
     implementation Kotlin.kotlin
 
     // Support
-    implementation Libraries.appCompact
+    implementation Libraries.appCompat
     implementation Libraries.coreKtx
+
+    // UI
+    implementation Libraries.material
+    implementation Libraries.constraintLayout
+    implementation Libraries.recycler
+
+    // DI
+    implementation Libraries.koin
+    implementation Libraries.koinViewModel
+
+    // Rx
+    implementation Libraries.rxJava
+    implementation Libraries.rxKotlin
+    implementation Libraries.rxAndroid
 }

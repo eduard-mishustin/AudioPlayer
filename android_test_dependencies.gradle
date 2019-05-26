@@ -5,22 +5,17 @@ android {
 }
 
 dependencies {
+    // Test
+    testImplementation TestLibraries.testJunit
+
     // Android test
     androidTestImplementation TestLibraries.androidTestRunner
     androidTestImplementation TestLibraries.espresso
-    androidTestImplementation TestLibraries.espressoContrib
-    androidTestImplementation TestLibraries.archCoreTest
-    androidTestImplementation TestLibraries.archCoreTest
-    androidTestImplementation TestLibraries.junit
-    androidTestImplementation TestLibraries.fragmentNav
-    testImplementation TestLibraries.androidTestRunner
-    testImplementation TestLibraries.archCoreTest
-    testImplementation TestLibraries.junit
 
     // Koin
     androidTestImplementation TestLibraries.koin
 
-    // Mock
-    androidTestImplementation TestLibraries.mock
+    // Mockk
+    androidTestImplementation TestLibraries.mockk
     testImplementation TestLibraries.mockk
 }

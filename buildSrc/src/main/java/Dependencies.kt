@@ -3,12 +3,15 @@ import org.gradle.api.JavaVersion
 
 private const val koinVersion = "1.0.2"
 
-private const val appCompactVersion = "1.1.0-alpha04"
-private const val coreKtxVersion = "1.0.1"
+private const val appCompatVersion = "1.1.0-alpha04"
+private const val coreKtxVersion = "1.0.2"
 private const val materialVersion = "1.1.0-alpha05"
 private const val constraintLayoutVersion = "1.1.3"
 private const val recyclerVersion = "1.0.0"
+private const val viewpager2Version = "1.0.0-alpha04"
 private const val navigationVersion = "2.1.0-alpha02"
+private const val gsonVersion = "2.8.5"
+private const val jsoupVersion = "1.11.2"
 private const val retrofitVersion = "2.5.0"
 private const val retrofitRxAdapterVersion = "2.4.0"
 private const val retrofitXmlConverterVersion = "2.3.0"
@@ -18,16 +21,20 @@ private const val rxAndroidVersion = "2.1.0"
 private const val lifecycleVersion = "1.1.1"
 private const val roomVersion = "1.1.1"
 private const val stethoVersion = "1.5.0"
+private const val exoplayerVersion = "2.9.4"
+private const val exoplayerCoreVersion = "2.10.0"
+private const val mediaVersion = "1.0.1"
+private const val mediarouterVersion = "1.0.0"
 private const val timeAgoVersion = "3.0.2"
 private const val glideVersion = "4.9.0"
 private const val photoViewVersion = "2.1.3"
 
+private const val junitVersion = "4.12"
 private const val androidTestRunnerVersion = "1.1.2-alpha02"
 private const val espressoCoreVersion = "3.2.0-alpha02"
-private const val mockVersion = "1.9.2"
-private const val mockWebserverVersion = "2.7.5"
+private const val mockkVersion = "1.9.2"
+private const val mockkWebserverVersion = "2.7.5"
 private const val archCoreTestVersion = "2.0.0"
-private const val junitVersion = "4.12"
 private const val androidJunitVersion = "1.1.0"
 private const val fragmentTestVersion = "1.1.0-alpha06"
 
@@ -37,6 +44,17 @@ object ApplicationId {
 
 object Module {
 	const val app = ":app"
+	
+	const val coreCommon = ":core-common"
+	const val coreData = ":core-data"
+	
+	const val featureService = ":feature-service"
+	
+	const val featureGenreList = ":feature-genrelist"
+	const val featureGenreTab = ":feature-genretab"
+	
+	const val featureAudioList = ":feature-audiolist"
+	const val featureAudioDetail = ":feature-audiodetail"
 }
 
 object Release {
@@ -62,13 +80,14 @@ object Kotlin {
 
 object Libraries {
 	// Support
-	const val appCompact = "androidx.appcompat:appcompat:$appCompactVersion"
+	const val appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
 	const val coreKtx = "androidx.core:core-ktx:$coreKtxVersion"
 	
 	// UI
 	const val material = "com.google.android.material:material:$materialVersion"
 	const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 	const val recycler = "androidx.recyclerview:recyclerview:$recyclerVersion"
+	const val viewpager2 = "androidx.viewpager2:viewpager2:$viewpager2Version"
 	
 	// Navigation
 	const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -79,22 +98,29 @@ object Libraries {
 	const val koinViewModel = "org.koin:koin-androidx-viewmodel:$koinVersion"
 	
 	// Network
+	const val gson = "com.google.code.gson:gson:$gsonVersion"
+	const val jsoup = "org.jsoup:jsoup:$jsoupVersion"
 	const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
 	const val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitRxAdapterVersion"
 	const val retrofitXmlConverter = "com.squareup.retrofit2:converter-simplexml:$retrofitXmlConverterVersion"
+	const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 	
 	// Rx
 	const val rxJava = "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 	const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
 	const val rxAndroid = "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
 	
-	// Livecycle
-	const val lifecycle = "android.arch.lifecycle:extensions:$lifecycleVersion"
-	
 	// Database
 	const val room = "android.arch.persistence.room:runtime:$roomVersion"
 	const val roomCompiler = "android.arch.persistence.room:compiler:$roomVersion"
 	const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
+	
+	// Audio
+	const val exoplayer = "com.google.android.exoplayer:exoplayer:$exoplayerVersion"
+	const val exoplayerCore = "com.google.android.exoplayer:exoplayer-core:$exoplayerCoreVersion"
+	const val exoplayerUi = "com.google.android.exoplayer:exoplayer-ui:$exoplayerCoreVersion"
+	const val media = "androidx.media:media:$mediaVersion"
+	const val mediarouter = "androidx.mediarouter:mediarouter:$mediarouterVersion"
 	
 	// Utils
 	const val timeAgo = "com.github.marlonlom:timeago:$timeAgoVersion"
@@ -102,8 +128,10 @@ object Libraries {
 	const val photoView = "com.github.chrisbanes:PhotoView:$photoViewVersion"
 }
 
-object Test {
+object TestLibraries {
 	// Android test
+	const val testJunit = "junit:junit:$junitVersion"
+	const val kotlinTestJunit = "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
 	const val androidTestRunner = "androidx.test:runner:$androidTestRunnerVersion"
 	const val espresso = "androidx.test.espresso:espresso-core:$espressoCoreVersion"
 	const val espressoContrib = "androidx.test.espresso:espresso-contrib:$espressoCoreVersion"
@@ -114,8 +142,8 @@ object Test {
 	// Koin
 	const val koin = "org.koin:koin-test:$koinVersion"
 	
-	// Mock
-	const val mock = "io.mockk:mockk:$mockVersion"
-	const val mockAndroid = "io.mockk:mockk-android:$mockVersion"
-	const val mockWebServer = "com.squareup.okhttp:mockwebserver:$mockWebserverVersion"
+	// Mockk
+	const val mockk = "io.mockk:mockk:$mockkVersion"
+	const val mockkAndroid = "io.mockk:mockk-android:$mockkVersion"
+	const val mockkWebServer = "com.squareup.okhttp:mockwebserver:$mockkWebserverVersion"
 }
