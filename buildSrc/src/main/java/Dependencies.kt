@@ -19,7 +19,7 @@ private const val rxJavaVersion = "2.2.3"
 private const val rxKotlinVersion = "2.3.0"
 private const val rxAndroidVersion = "2.1.0"
 private const val lifecycleVersion = "1.1.1"
-private const val roomVersion = "1.1.1"
+private const val roomVersion = "2.0.0"
 private const val stethoVersion = "1.5.0"
 private const val exoplayerVersion = "2.9.4"
 private const val exoplayerCoreVersion = "2.10.0"
@@ -112,6 +112,7 @@ object Libraries {
 	
 	// Database
 	const val room = "android.arch.persistence.room:runtime:$roomVersion"
+	const val roomRx = "android.arch.persistence.room:rxjava2:$roomVersion"
 	const val roomCompiler = "android.arch.persistence.room:compiler:$roomVersion"
 	const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
 	
@@ -146,4 +147,7 @@ object TestLibraries {
 	const val mockk = "io.mockk:mockk:$mockkVersion"
 	const val mockkAndroid = "io.mockk:mockk-android:$mockkVersion"
 	const val mockkWebServer = "com.squareup.okhttp:mockwebserver:$mockkWebserverVersion"
+	
+	// Database
+	const val room = "androidx.room:room-testing:$roomVersion"
 }

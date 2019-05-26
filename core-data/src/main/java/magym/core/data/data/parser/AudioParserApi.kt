@@ -3,7 +3,7 @@ package magym.core.data.data.parser
 import magym.core.data.data.entity.Audio
 import magym.core.data.data.entity.Genre
 
-internal interface AudioApi {
+internal interface AudioParserApi {
 	
 	fun getGenre(id: Int): Genre
 	

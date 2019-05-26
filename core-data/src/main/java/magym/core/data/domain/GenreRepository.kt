@@ -5,8 +5,8 @@ import magym.core.data.data.entity.Genre
 
 interface GenreRepository {
 	
-	fun getGenres(): Observable<List<Genre>>
-	
 	fun getGenre(id: Int): Observable<Genre>
+	
+	fun getGenres(filterQuery: String = ""): Observable<List<Genre>>
 	
 }

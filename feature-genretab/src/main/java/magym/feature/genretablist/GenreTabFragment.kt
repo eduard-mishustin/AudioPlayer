@@ -30,19 +30,18 @@ internal class GenreTabFragment :
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		checkArguments(KEY_GENRE_ID)
+		
 		if (savedInstanceState == null) postIntent(GenreListIntent.LoadData)
 		view_pager.adapter = adapter
 		view_pager.onPageSelected { postIntent(GenreListIntent.ChangeCurrentGenre(it)) }
 	}
 	
 	override fun render(state: GenreListViewState) {
-		activityProvider.titleToolbar = state.currentGenre.title
+		if (state.currentGenre.title != "") activityProvider.titleToolbar = state.currentGenre.title
 		
 		val isFirstGetList = adapter.items.isEmpty() && state.genres.isNotEmpty()
-		
 		adapter.items = state.genres
-		
-		if (isFirstGetList) view_pager.currentItem = adapter.getItemPosition(genreId)
+		if (isFirstGetList) view_pager.setCurrentItem(adapter.getItemPosition(genreId), false)
 	}
 	
 	override fun onSubscriptionReceived(subscription: GenreListSubscription) {

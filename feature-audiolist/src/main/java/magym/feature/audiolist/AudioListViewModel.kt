@@ -17,7 +17,7 @@ class AudioListViewModel(
 	
 	override fun act(state: AudioListViewState, intent: AudioListIntent): Observable<out AudioListAction> =
 		when (intent) {
-			is AudioListIntent.LoadData -> repository.getAudios(intent.genreId)
+			is AudioListIntent.LoadData -> repository.getAudios(intent.genreId, intent.filterQuery)
 				.map<AudioListAction> { AudioListAction.AudiosReceived(it) }
 				.startWith(AudioListAction.LoadDataStarted)
 				.onErrorReturn { AudioListAction.LoadDataFailed(it) }
@@ -32,7 +32,7 @@ class AudioListViewModel(
 		)
 		
 		is AudioListAction.AudiosReceived -> oldState.copy(
-			isLoading = false,
+			isLoading = action.audios.isEmpty(),
 			audios = action.audios
 		)
 		

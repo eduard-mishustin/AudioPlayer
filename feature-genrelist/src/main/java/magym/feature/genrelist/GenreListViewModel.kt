@@ -13,7 +13,7 @@ internal class GenreListViewModel(
 ) : MviViewModel<GenreListIntent, GenreListAction, GenreListViewState, GenreListSubscription>(GenreListViewState()) {
 	
 	override fun act(state: GenreListViewState, intent: GenreListIntent): Observable<GenreListAction> = when (intent) {
-		GenreListIntent.LoadData -> repository.getGenres()
+		is GenreListIntent.LoadData -> repository.getGenres()
 			.map<GenreListAction> { GenreListAction.GenresReceived(it) }
 			.startWith(GenreListAction.LoadDataStarted)
 			.onErrorReturn { GenreListAction.LoadDataFailed(it) }
@@ -25,7 +25,7 @@ internal class GenreListViewModel(
 		)
 		
 		is GenreListAction.GenresReceived -> oldState.copy(
-			isLoading = false,
+			isLoading = action.genres.isEmpty(),
 			genres = action.genres
 		)
 		

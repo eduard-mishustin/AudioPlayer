@@ -16,4 +16,9 @@ dependencies {
     // Network
     implementation Libraries.gson
     implementation Libraries.jsoup
+
+    // Database
+    implementation Libraries.room
+    implementation Libraries.roomRx
+    kapt Libraries.roomCompiler
 }
