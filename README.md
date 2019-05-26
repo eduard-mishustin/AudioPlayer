@@ -1,5 +1,5 @@
 # AudioPlayer
-Just a simple project with multi-module architecture
+Just a simple project with a multi-module architecture
 
 ## Technologies:
 * Multi-module
