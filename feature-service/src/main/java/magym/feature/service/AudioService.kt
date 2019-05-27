@@ -161,6 +161,11 @@ class AudioService : MediaBrowserServiceCompat(), IMediaSessionCallback {
 		return Service.START_STICKY
 	}
 	
+	override fun onTaskRemoved(rootIntent: Intent?) {
+		super.onTaskRemoved(rootIntent)
+		if (activeState == STATE_PAUSED) stopSelf()
+	}
+	
 	override fun onLoadChildren(parentId: String, result: Result<MutableList<MediaBrowserCompat.MediaItem>>) {}
 	
 	override fun onGetRoot(clientPackageName: String, clientUid: Int, rootHints: Bundle?): BrowserRoot? = null
