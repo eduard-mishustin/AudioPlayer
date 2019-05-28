@@ -10,6 +10,7 @@ private const val constraintLayoutVersion = "1.1.3"
 private const val recyclerVersion = "1.0.0"
 private const val viewpager2Version = "1.0.0-alpha04"
 private const val pagingVersion = "2.1.0"
+private const val glideVersion = "4.9.0"
 private const val navigationVersion = "2.1.0-alpha02"
 private const val gsonVersion = "2.8.5"
 private const val jsoupVersion = "1.11.2"
@@ -27,7 +28,6 @@ private const val exoplayerCoreVersion = "2.10.0"
 private const val mediaVersion = "1.0.1"
 private const val mediarouterVersion = "1.0.0"
 private const val timeAgoVersion = "3.0.2"
-private const val glideVersion = "4.9.0"
 private const val photoViewVersion = "2.1.3"
 
 private const val junitVersion = "4.12"
@@ -91,6 +91,8 @@ object Libraries {
 	const val viewpager2 = "androidx.viewpager2:viewpager2:$viewpager2Version"
 	const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
 	const val pagingRx = "androidx.paging:paging-rxjava2-ktx:$pagingVersion"
+	const val glide = "com.github.bumptech.glide:glide:$glideVersion"
+	const val glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
 	
 	// Navigation
 	const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -128,7 +130,6 @@ object Libraries {
 	
 	// Utils
 	const val timeAgo = "com.github.marlonlom:timeago:$timeAgoVersion"
-	const val glide = "com.github.bumptech.glide:glide:$glideVersion"
 	const val photoView = "com.github.chrisbanes:PhotoView:$photoViewVersion"
 }
 

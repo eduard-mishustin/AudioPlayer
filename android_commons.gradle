@@ -46,6 +46,7 @@ dependencies {
     implementation Libraries.recycler
     implementation Libraries.paging
     implementation Libraries.pagingRx
+    implementation Libraries.glide
 
     // DI
     implementation Libraries.koin

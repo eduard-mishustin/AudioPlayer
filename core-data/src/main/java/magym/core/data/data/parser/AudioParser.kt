@@ -1,9 +1,10 @@
 package magym.core.data.data.parser
 
 import magym.core.common.extention.stringDateToLong
+import magym.core.data.BuildConfig.BASE_URL
+import magym.core.data.BuildConfig.SHORT_BASE_URL
 import magym.core.data.data.entity.Audio
 import magym.core.data.data.entity.Genre
-import magym.core.data.util.BASE_URL
 import magym.core.data.util.getDocument
 import magym.core.data.util.second
 import org.jsoup.nodes.Element
@@ -21,7 +22,7 @@ internal class AudioParser : AudioParserApi {
 				artist = it.getElementsByClass("playlist-item-subtitle").text(),
 				duration = it.getElementsByClass("playlist-item-duration").text().stringDateToLong(),
 				url = it.select("a").first().attr("data-url"),
-				posterUrl = BASE_URL + it.select("a").second()?.attr("data-img")
+				posterUrl = SHORT_BASE_URL + it.select("a").second()?.attr("data-img")
 			)
 		}
 	

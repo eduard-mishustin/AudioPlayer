@@ -1,12 +1,9 @@
 package magym.core.data.util
 
-import magym.core.data.BuildConfig
 import org.jsoup.Connection
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
-
-internal const val BASE_URL = BuildConfig.BASE_URL
 
 internal fun getDocument(url: String): Document = Jsoup.connect(url).init().execute().parse()
 
