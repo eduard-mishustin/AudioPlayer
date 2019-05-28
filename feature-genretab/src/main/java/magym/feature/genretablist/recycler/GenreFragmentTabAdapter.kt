@@ -25,6 +25,8 @@ internal class GenreFragmentTabAdapter(
 			result.dispatchUpdatesTo(this)
 		}
 	
+	val lastFragmentIndex get() = fragments.size - 1
+	
 	private val fragments: MutableList<Fragment> = mutableListOf()
 	
 	init {
@@ -47,10 +49,19 @@ internal class GenreFragmentTabAdapter(
 		})
 	}
 	
+	
 	override fun getItem(position: Int) = fragments[position]
 	
 	override fun getItemCount() = fragments.size
 	
+	
+	fun addFragmentToEnd() {
+		fragments.add(AudioListFragment.newInstance(0))
+	}
+	
+	fun removeLastFragment() {
+		fragments.remove(fragments.last())
+	}
 	
 	fun getItemPosition(id: Any) = items.indexOfFirst { it.id == id }
 	

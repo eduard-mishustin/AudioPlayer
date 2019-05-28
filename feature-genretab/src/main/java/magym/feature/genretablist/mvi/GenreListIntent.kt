@@ -6,4 +6,6 @@ internal sealed class GenreListIntent {
 	
 	class ChangeCurrentGenre(val index: Int) : GenreListIntent()
 	
+	class ChangeSearchMode(val isSearchMode: Boolean, val currentPageItem: Int) : GenreListIntent()
+
 }

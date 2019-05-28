@@ -20,9 +20,11 @@ private const val retrofitXmlConverterVersion = "2.3.0"
 private const val rxJavaVersion = "2.2.3"
 private const val rxKotlinVersion = "2.3.0"
 private const val rxAndroidVersion = "2.1.0"
+private const val rxBindingVersion = "3.0.0-alpha2"
 private const val lifecycleVersion = "1.1.1"
 private const val roomVersion = "2.0.0"
 private const val stethoVersion = "1.5.0"
+private const val stethoRealmVersion = "2.1.0"
 private const val exoplayerVersion = "2.9.4"
 private const val exoplayerCoreVersion = "2.10.0"
 private const val mediaVersion = "1.0.1"
@@ -114,12 +116,15 @@ object Libraries {
 	const val rxJava = "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 	const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
 	const val rxAndroid = "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+	const val rxBinding = "com.jakewharton.rxbinding3:rxbinding:$rxBindingVersion"
+	const val rxBindingAppcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxBindingVersion"
 	
 	// Database
 	const val room = "android.arch.persistence.room:runtime:$roomVersion"
 	const val roomRx = "android.arch.persistence.room:rxjava2:$roomVersion"
 	const val roomCompiler = "android.arch.persistence.room:compiler:$roomVersion"
 	const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
+	const val stethoRealm = "com.uphyca:stetho_realm:$stethoRealmVersion"
 	
 	// Audio
 	const val exoplayer = "com.google.android.exoplayer:exoplayer:$exoplayerVersion"

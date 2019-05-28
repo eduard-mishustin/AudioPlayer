@@ -24,9 +24,9 @@ internal class GenreListFragment :
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+		toolbar.init()
 		
 		if (savedInstanceState == null) postIntent(GenreListIntent.LoadData())
-		activityProvider.titleToolbar = "Жанры"
 		recycler_view.init(adapter)
 	}
 	

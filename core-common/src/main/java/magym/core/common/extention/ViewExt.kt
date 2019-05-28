@@ -1,12 +1,12 @@
 package magym.core.common.extention
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -14,10 +14,6 @@ var View.onClick: () -> Unit
 	get() = {}
 	set(value) = setOnClickListener { value() }
 
-
-fun Toolbar.init(activity: AppCompatActivity) = apply {
-	activity.setSupportActionBar(this)
-}
 
 fun RecyclerView.init(
 	adapter: RecyclerView.Adapter<*>,
@@ -35,4 +31,9 @@ fun Context.inflate(@LayoutRes resource: Int, root: ViewGroup? = null, attachToR
 
 fun View.inflate(@LayoutRes resource: Int, root: ViewGroup? = null, attachToRoot: Boolean = false): View {
 	return context.inflate(resource, root, attachToRoot)
+}
+
+fun View.closeSoftKeyboard() {
+	val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+	imm.hideSoftInputFromWindow(windowToken, 0)
 }

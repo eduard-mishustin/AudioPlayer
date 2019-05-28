@@ -22,4 +22,5 @@ dependencies {
     implementation Libraries.room
     implementation Libraries.roomRx
     kapt Libraries.roomCompiler
+    implementation Libraries.stetho
 }

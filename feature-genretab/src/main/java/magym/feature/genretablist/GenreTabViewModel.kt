@@ -13,15 +13,25 @@ internal class GenreTabViewModel(
 	private val repository: GenreRepository
 ) : MviViewModel<GenreListIntent, GenreListAction, GenreListViewState, GenreListSubscription>(GenreListViewState()) {
 	
-	override fun act(state: GenreListViewState, intent: GenreListIntent): Observable<GenreListAction> = when (intent) {
-		GenreListIntent.LoadData -> repository.getGenres()
-			.map<GenreListAction> { GenreListAction.GenresReceived(it) }
-			.startWith(GenreListAction.LoadDataStarted)
-			.onErrorReturn { GenreListAction.LoadDataFailed(it) }
-		
-		is GenreListIntent.ChangeCurrentGenre -> GenreListAction.ChangeCurrentGenre(intent.index)
-			.toObservable()
-	}
+	override fun act(state: GenreListViewState, intent: GenreListIntent): Observable<out GenreListAction> =
+		when (intent) {
+			GenreListIntent.LoadData -> repository.getGenres()
+				.map<GenreListAction> { GenreListAction.GenresReceived(it) }
+				.startWith(GenreListAction.LoadDataStarted)
+				.onErrorReturn { GenreListAction.LoadDataFailed(it) }
+			
+			is GenreListIntent.ChangeCurrentGenre -> if (!state.isSearchMode) {
+				GenreListAction.ChangeCurrentGenre(intent.index).toObservable()
+			} else {
+				super.act(state, intent)
+			}
+			
+			is GenreListIntent.ChangeSearchMode -> if (intent.isSearchMode != state.isSearchMode) {
+				GenreListAction.ChangeSearchMode(intent.isSearchMode, intent.currentPageItem).toObservable()
+			} else {
+				super.act(state, intent)
+			}
+		}
 	
 	override fun reduce(oldState: GenreListViewState, action: GenreListAction) = when (action) {
 		GenreListAction.LoadDataStarted -> oldState.copy(
@@ -39,6 +49,11 @@ internal class GenreTabViewModel(
 		
 		is GenreListAction.ChangeCurrentGenre -> oldState.copy(
 			currentGenre = oldState.genres[action.index]
+		)
+		
+		is GenreListAction.ChangeSearchMode -> oldState.copy(
+			currentPageItem = if (action.isSearch) action.currentPageItem else oldState.currentPageItem,
+			isSearchMode = action.isSearch
 		)
 	}
 	

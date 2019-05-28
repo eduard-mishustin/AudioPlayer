@@ -60,8 +60,6 @@ class AudioService : MediaBrowserServiceCompat(), IMediaSessionCallback {
 	//private lateinit var audio: Audio
 	private var audio: Audio = Audio(
 		id = 47829250,
-		index = 0,
-		genreId = 6,
 		title = "Come As You Are",
 		artist = "Nirvana",
 		duration = 5072438000,

@@ -56,4 +56,6 @@ dependencies {
     implementation Libraries.rxJava
     implementation Libraries.rxKotlin
     implementation Libraries.rxAndroid
+    implementation Libraries.rxBinding
+    implementation Libraries.rxBindingAppcompat
 }

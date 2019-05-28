@@ -2,6 +2,7 @@ package magym.feature.audiolist
 
 import android.os.Bundle
 import android.view.View
+import io.reactivex.rxkotlin.plusAssign
 import kotlinx.android.synthetic.main.fragment_audios.*
 import magym.core.common.extention.argumentInt
 import magym.core.common.extention.init
@@ -12,6 +13,8 @@ import magym.feature.audiolist.mvi.AudioListSubscription
 import magym.feature.audiolist.mvi.AudioListViewState
 import magym.feature.audiolist.recycler.AudioAdapter
 import org.koin.android.ext.android.get
+import org.koin.core.parameter.parametersOf
+import java.util.concurrent.TimeUnit
 
 class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, AudioListSubscription>() {
 	
@@ -21,7 +24,10 @@ class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, Audio
 	
 	private val adapter: AudioAdapter = AudioAdapter(::onItemClick)
 	
-	override fun provideViewModel(): AudioListViewModel = get()
+	private val searchViewProvider: SearchViewProvider = get()
+	
+	
+	override fun provideViewModel(): AudioListViewModel = get { parametersOf(genreId == 0) }
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
@@ -29,10 +35,14 @@ class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, Audio
 		
 		postIntent(AudioListIntent.LoadData(genreId))
 		recycler_view.init(adapter)
+		
+		disposable += searchViewProvider.textChanges
+			.debounce(500, TimeUnit.MILLISECONDS)
+			.subscribe { postIntent(AudioListIntent.LoadData(genreId, it.toString())) }
 	}
 	
 	override fun render(state: AudioListViewState) {
-		activityProvider.isLoading = state.isLoading
+		if (activityProvider.isLoading != state.isLoading) activityProvider.isLoading = state.isLoading
 		adapter.submitList(state.audios)
 	}
 	
@@ -43,6 +53,7 @@ class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, Audio
 			}
 		}
 	}
+	
 	
 	private fun onItemClick(audio: Audio) {
 		postIntent(AudioListIntent.PlayAudio(audio))
