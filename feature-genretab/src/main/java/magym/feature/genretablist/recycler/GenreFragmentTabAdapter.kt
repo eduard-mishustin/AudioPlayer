@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import magym.core.common.recycler.simple.EntityDiffCallback
+import magym.core.common.recycler.EntityDiffCallback
 import magym.core.data.data.entity.Genre
 import magym.feature.audiolist.AudioListFragment
 
@@ -23,9 +23,8 @@ internal class GenreFragmentTabAdapter(
 			field = value
 			
 			result.dispatchUpdatesTo(this)
+			notifyDataSetChanged()
 		}
-	
-	val lastFragmentIndex get() = fragments.size - 1
 	
 	private val fragments: MutableList<Fragment> = mutableListOf()
 	
@@ -54,14 +53,6 @@ internal class GenreFragmentTabAdapter(
 	
 	override fun getItemCount() = fragments.size
 	
-	
-	fun addFragmentToEnd() {
-		fragments.add(AudioListFragment.newInstance(0))
-	}
-	
-	fun removeLastFragment() {
-		fragments.remove(fragments.last())
-	}
 	
 	fun getItemPosition(id: Any) = items.indexOfFirst { it.id == id }
 	

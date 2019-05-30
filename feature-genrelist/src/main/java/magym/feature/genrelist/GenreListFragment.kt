@@ -1,6 +1,7 @@
 package magym.feature.genrelist
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_genres.*
 import magym.core.common.extention.init
@@ -17,6 +18,8 @@ internal class GenreListFragment :
 	
 	override val layoutId = R.layout.fragment_genres
 	
+	override val menuResource = R.menu.genrelist_menu
+	
 	private val adapter: GenreAdapter = GenreAdapter(::onItemClick)
 	
 	
@@ -24,10 +27,19 @@ internal class GenreListFragment :
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		toolbar.init()
+		toolbar.init(enableArrowUp = false)
 		
 		if (savedInstanceState == null) postIntent(GenreListIntent.LoadData())
 		recycler_view.init(adapter)
+	}
+	
+	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+		when (item.itemId) {
+			R.id.search -> navigator.toAudioSearch()
+			else -> return super.onOptionsItemSelected(item)
+		}
+		
+		return true
 	}
 	
 	override fun render(state: GenreListViewState) {
@@ -45,7 +57,7 @@ internal class GenreListFragment :
 	
 	
 	private fun onItemClick(genre: Genre) {
-		navigation.toAudioList(genre.id)
+		navigator.toGenreTab(genre.id)
 	}
 	
 }

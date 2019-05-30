@@ -16,6 +16,8 @@ internal class AudioBoundaryCallback(
 	private val filterQuery: String
 ) : PagedList.BoundaryCallback<Audio>() {
 	
+	// todo add retry by callback
+	
 	private var lastIndex = 0
 	
 	override fun onZeroItemsLoaded() {

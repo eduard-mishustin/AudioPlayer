@@ -14,15 +14,19 @@ internal class Navigator : AudioPlayerNavigation {
 	private var navController: NavController? = null
 	
 	
-	override fun toAudioList(genreId: Int) {
-		navController?.navigateWithPop(
+	override fun toGenreTab(genreId: Int) {
+		navController?.navigateWithSameCheck(
 			R.id.genreTabFragment,
-			bundleOf(Pair(KEY_GENRE_ID, genreId))
+			bundleOf(KEY_GENRE_ID to genreId)
 		)
 	}
 	
+	override fun toAudioSearch() {
+		navController?.navigateWithSameCheck(R.id.audioSearchFragment)
+	}
+	
 	override fun toAudioDetail(audioId: Int) {
-		/*navController?.navigateWithPop(
+		/*navController?.navigateWithSameCheck(
 			R.id.,
 			bundleOf(Pair(KEY_AUDIO_ID, audioId))
 		)*/
@@ -43,6 +47,18 @@ internal class Navigator : AudioPlayerNavigation {
 	
 	
 	private companion object {
+		
+		private fun NavController.navigateWithSameCheck(
+			@IdRes screenId: Int,
+			args: Bundle? = null,
+			navOptions: NavOptions? = null
+		) {
+			val currentScreenId = currentDestination?.id
+			
+			if (currentScreenId != screenId) {
+				navigate(screenId, args, navOptions)
+			}
+		}
 		
 		private fun NavController.navigateWithPop(
 			@IdRes screenId: Int,

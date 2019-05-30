@@ -1,11 +1,10 @@
-package magym.feature.audiolist.recycler
+package magym.feature.featureaudioadapter
 
 import android.view.View
 import magym.core.common.recycler.paged.PagedBaseAdapter
 import magym.core.data.data.entity.Audio
-import magym.feature.audiolist.R
 
-internal class AudioAdapter(
+class AudioAdapter(
 	private val onClick: (Audio) -> Unit
 ) : PagedBaseAdapter<Audio, AudioViewHolder>() {
 	

@@ -57,6 +57,8 @@ object Module {
 	const val featureGenreTab = ":feature-genretab"
 	
 	const val featureAudioList = ":feature-audiolist"
+	const val featureAudioSearch = ":feature-audiosearch"
+	const val featureAudioRecycler = ":feature-audiorecycler"
 	const val featureAudioDetail = ":feature-audiodetail"
 }
 

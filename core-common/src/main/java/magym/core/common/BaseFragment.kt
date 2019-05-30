@@ -19,7 +19,7 @@ abstract class BaseFragment : Fragment() {
 	@MenuRes
 	protected open val menuResource: Int? = null
 	
-	protected val navigation: AudioPlayerNavigation = get()
+	protected val navigator: AudioPlayerNavigation = get()
 	protected val activityProvider by lazy { activity as ActivityProvider }
 	
 	protected val activity by lazy { getActivity() as AppCompatActivity }
@@ -57,7 +57,7 @@ abstract class BaseFragment : Fragment() {
 	
 	override fun onOptionsItemSelected(item: MenuItem): Boolean {
 		when (item.itemId) {
-			android.R.id.home -> activity.onBackPressed()
+			android.R.id.home -> navigator.onBackPressed()
 			else -> return super.onOptionsItemSelected(item)
 		}
 		
@@ -65,7 +65,7 @@ abstract class BaseFragment : Fragment() {
 	}
 	
 	
-	protected fun Toolbar.init(enableArrowUp: Boolean = false) {
+	protected fun Toolbar.init(enableArrowUp: Boolean = true) {
 		activity.setSupportActionBar(this)
 		activity.supportActionBar?.setDisplayHomeAsUpEnabled(enableArrowUp)
 	}
@@ -74,7 +74,7 @@ abstract class BaseFragment : Fragment() {
 		keys.forEach {
 			if (argumentIsNotExist(it)) {
 				toast("Ошибка получения данных")
-				navigation.onBackPressed()
+				navigator.onBackPressed()
 			}
 		}
 	}

@@ -2,7 +2,9 @@ package magym.core.common
 
 interface AudioPlayerNavigation {
 	
-	fun toAudioList(genreId: Int)
+	fun toGenreTab(genreId: Int)
+	
+	fun toAudioSearch()
 	
 	fun toAudioDetail(audioId: Int)
 	

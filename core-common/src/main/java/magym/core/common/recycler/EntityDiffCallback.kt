@@ -1,4 +1,4 @@
-package magym.core.common.recycler.simple
+package magym.core.common.recycler
 
 import androidx.recyclerview.widget.DiffUtil
 
