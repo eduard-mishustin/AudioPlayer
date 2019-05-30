@@ -1,8 +1,10 @@
 package magym.feature.audiolist.mvi
 
+import androidx.paging.PagedList
 import magym.core.data.data.entity.Audio
 
 data class AudioListViewState(
 	val isLoading: Boolean = false,
-	val audios: List<Audio> = arrayListOf()
+	val audios: PagedList<Audio>? = null,
+	val isSearchMode: Boolean
 )

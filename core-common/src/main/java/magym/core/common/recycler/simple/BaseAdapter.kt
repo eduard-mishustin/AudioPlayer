@@ -1,4 +1,4 @@
-package magym.core.common.recycler
+package magym.core.common.recycler.simple
 
 import android.content.Context
 import android.view.View
@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import magym.core.common.extention.inflate
+import magym.core.common.recycler.BaseViewHolder
+import magym.core.common.recycler.KeyEntity
 
-abstract class BaseAdapter<T : KeyEntity<*>, VH : BaseViewHolder<T>> : RecyclerView.Adapter<VH>() {
+abstract class BaseAdapter<T : KeyEntity<*>, VH : BaseViewHolder<T>>
+	: RecyclerView.Adapter<VH>() {
 	
 	var items: List<T> = listOf()
 		set(value) {

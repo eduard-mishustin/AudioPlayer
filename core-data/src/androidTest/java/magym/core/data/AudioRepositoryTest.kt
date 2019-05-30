@@ -1,7 +1,7 @@
 package magym.core.data
 
 import magym.core.data.data.parser.AudioParser
-import magym.core.data.domain.AudioProvider
+import magym.core.data.domain.DataProvider
 import org.junit.Assert
 import org.junit.Test
 
@@ -10,7 +10,7 @@ class AudioRepositoryTest {
 	// todo Убрать нетворк, подставлять дефолтную страницу для парсинга
 	
 	private val parser = AudioParser()
-	private val provider = AudioProvider(parser)
+	private val provider = DataProvider(parser)
 	
 	@Test
 	fun getGenre() {

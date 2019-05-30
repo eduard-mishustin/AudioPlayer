@@ -1,16 +1,23 @@
 package magym.core.data
 
-import magym.core.data.data.parser.AudioApi
+import magym.core.data.data.base.AudioPlayerDatabase
 import magym.core.data.data.parser.AudioParser
-import magym.core.data.domain.AudioProvider
-import magym.core.data.domain.AudioRepository
-import magym.core.data.domain.GenreRepository
+import magym.core.data.data.parser.AudioParserApi
+import magym.core.data.domain.DataProvider
+import magym.core.data.domain.repository.AudioRepository
+import magym.core.data.domain.repository.GenreRepository
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module.module
 
 val dataModule = module {
-	single<AudioApi> { AudioParser() }
+	single { AudioPlayerDatabase.createDatabase(androidContext()) }
+	single { get<AudioPlayerDatabase>().getAudioDao() }
+	single { get<AudioPlayerDatabase>().getGenreDao() }
+	single { get<AudioPlayerDatabase>().getAudioGenreDao() }
 	
-	single { AudioProvider(get()) }
-	single<GenreRepository> { get<AudioProvider>() }
-	single<AudioRepository> { get<AudioProvider>() }
+	single<AudioParserApi> { AudioParser() }
+	
+	single { DataProvider(get(), get(), get(), get()) }
+	single<GenreRepository> { get<DataProvider>() }
+	single<AudioRepository> { get<DataProvider>() }
 }

@@ -2,6 +2,6 @@ package magym.feature.genrelist.mvi
 
 internal sealed class GenreListIntent {
 	
-	object LoadData : GenreListIntent()
+	class LoadData(val filterQuery: String = "") : GenreListIntent()
 	
 }

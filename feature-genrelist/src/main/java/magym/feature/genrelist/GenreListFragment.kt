@@ -24,10 +24,9 @@ internal class GenreListFragment :
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+		toolbar.init()
 		
-		if (savedInstanceState == null) postIntent(GenreListIntent.LoadData)
-		
-		activityProvider.titleToolbar = "Жанры"
+		if (savedInstanceState == null) postIntent(GenreListIntent.LoadData())
 		recycler_view.init(adapter)
 	}
 	
@@ -39,7 +38,7 @@ internal class GenreListFragment :
 	override fun onSubscriptionReceived(subscription: GenreListSubscription) {
 		when (subscription) {
 			is GenreListSubscription.RemoteRequestError -> {
-				layout.showErrorSnackBarWithAction { postIntent(GenreListIntent.LoadData) }
+				layout.showErrorSnackBarWithAction { postIntent(GenreListIntent.LoadData()) }
 			}
 		}
 	}

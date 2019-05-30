@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.BitmapFactory
 import android.media.AudioAttributes
 import android.media.AudioFocusRequest
 import android.media.AudioManager
@@ -30,6 +29,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import magym.core.common.extention.appName
 import magym.core.common.extention.isOreoOrMore
+import magym.core.common.extention.loadBitmap
 import magym.core.data.data.entity.Audio
 import magym.feature.service.util.IMediaSessionCallback
 import magym.feature.service.util.MediaSessionCallback
@@ -60,12 +60,11 @@ class AudioService : MediaBrowserServiceCompat(), IMediaSessionCallback {
 	//private lateinit var audio: Audio
 	private var audio: Audio = Audio(
 		id = 47829250,
-		genreId = 6,
 		title = "Come As You Are",
 		artist = "Nirvana",
 		duration = 5072438000,
 		url = "https://muzlo.me/get/music/20170830/muzlome_Nirvana_-_Come_As_You_Are_47829250.mp3",
-		posterUrl = "https://muzlo.me//cover/song/47829250.jpg"
+		posterUrl = "https://muzlo.me/cover/song/47829250.jpg"
 	)
 	
 	private val metadataBuilder = MediaMetadataCompat.Builder()
@@ -160,16 +159,24 @@ class AudioService : MediaBrowserServiceCompat(), IMediaSessionCallback {
 		return Service.START_STICKY
 	}
 	
+	override fun onTaskRemoved(rootIntent: Intent?) {
+		super.onTaskRemoved(rootIntent)
+		if (activeState == STATE_PAUSED) stopSelf()
+	}
+	
 	override fun onLoadChildren(parentId: String, result: Result<MutableList<MediaBrowserCompat.MediaItem>>) {}
 	
 	override fun onGetRoot(clientPackageName: String, clientUid: Int, rootHints: Bundle?): BrowserRoot? = null
 	
 	override fun onPlay() {
+		loadBitmap(audio.posterUrl) { bitmap ->
+			metadataBuilder.putBitmap(MediaMetadataCompat.METADATA_KEY_ART, bitmap)
+			mediaSession.setMetadata(metadataBuilder.build())
+			
+			updateNotification(activeState)
+		}
+		
 		metadataBuilder.apply {
-			putBitmap(
-				MediaMetadataCompat.METADATA_KEY_ART,
-				BitmapFactory.decodeResource(resources, 0)
-			)
 			putString(MediaMetadataCompat.METADATA_KEY_TITLE, audio.title)
 			putString(MediaMetadataCompat.METADATA_KEY_ARTIST, audio.artist)
 			putLong(MediaMetadataCompat.METADATA_KEY_DURATION, audio.duration)
@@ -236,7 +243,7 @@ class AudioService : MediaBrowserServiceCompat(), IMediaSessionCallback {
 			)
 			
 			STATE_PAUSED -> {
-				notify(NOTIFICATION_ID, createAudioPlayerNotification(playbackState, mediaSession))
+				updateNotification(playbackState)
 				stopForeground(false)
 			}
 			
@@ -249,6 +256,10 @@ class AudioService : MediaBrowserServiceCompat(), IMediaSessionCallback {
 				stopForeground(true)
 			}
 		}
+	}
+	
+	private fun updateNotification(playbackState: Int) {
+		notify(NOTIFICATION_ID, createAudioPlayerNotification(playbackState, mediaSession))
 	}
 	
 	private fun setPlaybackState(

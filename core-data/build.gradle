@@ -6,6 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     defaultConfig {
         buildConfigField "String", "BASE_URL", "\"https://muzlo.me/\""
+        buildConfigField "String", "SHORT_BASE_URL", "\"https://muzlo.me\""
     }
 }
 
@@ -16,4 +17,10 @@ dependencies {
     // Network
     implementation Libraries.gson
     implementation Libraries.jsoup
+
+    // Database
+    implementation Libraries.room
+    implementation Libraries.roomRx
+    kapt Libraries.roomCompiler
+    implementation Libraries.stetho
 }

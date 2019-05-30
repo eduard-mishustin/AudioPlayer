@@ -11,5 +11,7 @@ internal sealed class GenreListAction {
 	class LoadDataFailed(val error: Throwable) : GenreListAction()
 	
 	class ChangeCurrentGenre(val index: Int) : GenreListAction()
-	
+
+	class ChangeSearchMode(val isSearch: Boolean, val currentPageItem: Int) : GenreListAction()
+
 }

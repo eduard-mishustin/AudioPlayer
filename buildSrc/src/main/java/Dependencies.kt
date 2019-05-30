@@ -9,6 +9,8 @@ private const val materialVersion = "1.1.0-alpha05"
 private const val constraintLayoutVersion = "1.1.3"
 private const val recyclerVersion = "1.0.0"
 private const val viewpager2Version = "1.0.0-alpha04"
+private const val pagingVersion = "2.1.0"
+private const val glideVersion = "4.9.0"
 private const val navigationVersion = "2.1.0-alpha02"
 private const val gsonVersion = "2.8.5"
 private const val jsoupVersion = "1.11.2"
@@ -18,15 +20,16 @@ private const val retrofitXmlConverterVersion = "2.3.0"
 private const val rxJavaVersion = "2.2.3"
 private const val rxKotlinVersion = "2.3.0"
 private const val rxAndroidVersion = "2.1.0"
+private const val rxBindingVersion = "3.0.0-alpha2"
 private const val lifecycleVersion = "1.1.1"
-private const val roomVersion = "1.1.1"
+private const val roomVersion = "2.0.0"
 private const val stethoVersion = "1.5.0"
+private const val stethoRealmVersion = "2.1.0"
 private const val exoplayerVersion = "2.9.4"
 private const val exoplayerCoreVersion = "2.10.0"
 private const val mediaVersion = "1.0.1"
 private const val mediarouterVersion = "1.0.0"
 private const val timeAgoVersion = "3.0.2"
-private const val glideVersion = "4.9.0"
 private const val photoViewVersion = "2.1.3"
 
 private const val junitVersion = "4.12"
@@ -88,6 +91,10 @@ object Libraries {
 	const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 	const val recycler = "androidx.recyclerview:recyclerview:$recyclerVersion"
 	const val viewpager2 = "androidx.viewpager2:viewpager2:$viewpager2Version"
+	const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
+	const val pagingRx = "androidx.paging:paging-rxjava2-ktx:$pagingVersion"
+	const val glide = "com.github.bumptech.glide:glide:$glideVersion"
+	const val glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
 	
 	// Navigation
 	const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -109,11 +116,15 @@ object Libraries {
 	const val rxJava = "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 	const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
 	const val rxAndroid = "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+	const val rxBinding = "com.jakewharton.rxbinding3:rxbinding:$rxBindingVersion"
+	const val rxBindingAppcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxBindingVersion"
 	
 	// Database
 	const val room = "android.arch.persistence.room:runtime:$roomVersion"
+	const val roomRx = "android.arch.persistence.room:rxjava2:$roomVersion"
 	const val roomCompiler = "android.arch.persistence.room:compiler:$roomVersion"
 	const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
+	const val stethoRealm = "com.uphyca:stetho_realm:$stethoRealmVersion"
 	
 	// Audio
 	const val exoplayer = "com.google.android.exoplayer:exoplayer:$exoplayerVersion"
@@ -124,7 +135,6 @@ object Libraries {
 	
 	// Utils
 	const val timeAgo = "com.github.marlonlom:timeago:$timeAgoVersion"
-	const val glide = "com.github.bumptech.glide:glide:$glideVersion"
 	const val photoView = "com.github.chrisbanes:PhotoView:$photoViewVersion"
 }
 
@@ -146,4 +156,7 @@ object TestLibraries {
 	const val mockk = "io.mockk:mockk:$mockkVersion"
 	const val mockkAndroid = "io.mockk:mockk-android:$mockkVersion"
 	const val mockkWebServer = "com.squareup.okhttp:mockwebserver:$mockkWebserverVersion"
+	
+	// Database
+	const val room = "androidx.room:room-testing:$roomVersion"
 }

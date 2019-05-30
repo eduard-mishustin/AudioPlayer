@@ -3,7 +3,7 @@ package magym.feature.audiolist
 import io.reactivex.Completable
 import io.reactivex.Observable
 import magym.core.common.mvi.MviViewModel
-import magym.core.data.domain.AudioRepository
+import magym.core.data.domain.repository.AudioRepository
 import magym.feature.audiolist.mvi.AudioListAction
 import magym.feature.audiolist.mvi.AudioListIntent
 import magym.feature.audiolist.mvi.AudioListSubscription
@@ -12,18 +12,26 @@ import magym.feature.service.AudioPlayerState
 
 class AudioListViewModel(
 	private val repository: AudioRepository,
-	private val audioPlayerState: AudioPlayerState
-) : MviViewModel<AudioListIntent, AudioListAction, AudioListViewState, AudioListSubscription>(AudioListViewState()) {
+	private val audioPlayerState: AudioPlayerState,
+	isSearchMode: Boolean
+) : MviViewModel<AudioListIntent, AudioListAction, AudioListViewState, AudioListSubscription>(
+	AudioListViewState(isSearchMode = isSearchMode)
+) {
 	
 	override fun act(state: AudioListViewState, intent: AudioListIntent): Observable<out AudioListAction> =
 		when (intent) {
-			is AudioListIntent.LoadData -> repository.getAudios(intent.genreId)
-				.map<AudioListAction> { AudioListAction.AudiosReceived(it) }
-				.startWith(AudioListAction.LoadDataStarted)
-				.onErrorReturn { AudioListAction.LoadDataFailed(it) }
+			is AudioListIntent.LoadData -> if (!state.isSearchMode || intent.filterQuery.isNotEmpty()) {
+				repository.getAudios(intent.genreId, intent.filterQuery)
+					.asFlowSource(AudioListIntent.LoadData::class)
+					.map<AudioListAction> { AudioListAction.AudiosReceived(it) }
+					.startWith(AudioListAction.LoadDataStarted)
+					.onErrorReturn { AudioListAction.LoadDataFailed(it) }
+			} else {
+				super.act(state, intent)
+			}
 			
 			is AudioListIntent.PlayAudio -> Completable.fromAction { audioPlayerState.audio.onNext(intent.audio) }
-				.andThen(super.act(state, intent))
+				.toObservable()
 		}
 	
 	override fun reduce(oldState: AudioListViewState, action: AudioListAction) = when (action) {
