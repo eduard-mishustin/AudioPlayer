@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import magym.core.common.extention.inflate
 import magym.core.common.recycler.BaseViewHolder
+import magym.core.common.recycler.EntityDiffCallback
 import magym.core.common.recycler.KeyEntity
 
 abstract class BaseAdapter<T : KeyEntity<*>, VH : BaseViewHolder<T>>

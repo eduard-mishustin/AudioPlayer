@@ -11,11 +11,23 @@
 		<action
 			android:id="@+id/action_genreListFragment_to_genreTabFragment"
 			app:destination="@id/genreTabFragment"/>
+		<action
+			android:id="@+id/action_genreListFragment_to_audioSearchFragment"
+			app:destination="@id/audioSearchFragment"/>
 	</fragment>
 	
 	<fragment
 		android:id="@+id/genreTabFragment"
 		android:name="magym.feature.genretablist.GenreTabFragment"
-		android:label="GenreTabFragment"/>
+		android:label="GenreTabFragment">
+		<action
+			android:id="@+id/action_genreTabFragment_to_audioSearchFragment"
+			app:destination="@id/audioSearchFragment"/>
+	</fragment>
+	
+	<fragment
+		android:id="@+id/audioSearchFragment"
+		android:name="magym.feature.audiosearch.AudioSearchFragment"
+		android:label="AudioSearchFragment"/>
 
 </navigation>

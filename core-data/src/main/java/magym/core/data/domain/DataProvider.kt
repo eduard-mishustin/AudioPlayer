@@ -23,6 +23,8 @@ internal class DataProvider(
 	private val parser: AudioParserApi
 ) : GenreRepository, AudioRepository {
 	
+	// todo add retry by rx not callback
+	
 	override fun getGenre(id: Int): Observable<Genre> =
 		Observable.fromCallable { parser.getGenre(id) }
 	

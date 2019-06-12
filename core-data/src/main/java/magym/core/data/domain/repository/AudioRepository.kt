@@ -6,6 +6,6 @@ import magym.core.data.data.entity.Audio
 
 interface AudioRepository {
 	
-	fun getAudios(genreId: Int, filterQuery: String): Observable<PagedList<Audio>>
+	fun getAudios(genreId: Int = 0, filterQuery: String = ""): Observable<PagedList<Audio>>
 	
 }

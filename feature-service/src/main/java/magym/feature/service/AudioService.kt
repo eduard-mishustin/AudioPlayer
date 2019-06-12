@@ -145,7 +145,7 @@ class AudioService : MediaBrowserServiceCompat(), IMediaSessionCallback {
 	override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 		MediaButtonReceiver.handleIntent(mediaSession, intent)
 		
-		// fixme (ниже костыль): Context.startForegroundService() did not then call Service.startForeground()
+		// fixme (ниже костыль): "Context.startForegroundService() did not then call Service.startForeground()"
 		// Тут таже проблема, что и ниже. Похоже, что кто-то где-то вызывает start или stop foreground
 		if (activeState == STATE_PAUSED) {
 			startForeground(NOTIFICATION_ID, createAudioPlayerNotification(activeState, mediaSession))
@@ -248,7 +248,7 @@ class AudioService : MediaBrowserServiceCompat(), IMediaSessionCallback {
 			}
 			
 			else -> {
-				// fixme (ниже костыль): Context.startForegroundService() did not then call Service.startForeground()
+				// fixme (ниже костыль): "Context.startForegroundService() did not then call Service.startForeground()"
 				// Нельзя два раза подряд вызывать stopForeground, иначе падение
 				// https://stackoverflow.com/questions/44425584/context-startforegroundservice-did-not-then-call-service-startforeground
 				startForeground(NOTIFICATION_ID, createAudioPlayerNotification(playbackState, mediaSession))
@@ -293,6 +293,7 @@ class AudioService : MediaBrowserServiceCompat(), IMediaSessionCallback {
 				.notify(id, notification)
 		}
 		
+		// TODO: Replace deprecated functions
 		private fun ExoPlayer.prepare(url: String, context: Context) {
 			val dataSourceFactory = DefaultDataSourceFactory(
 				context,

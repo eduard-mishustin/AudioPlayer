@@ -10,9 +10,15 @@ fun <T> T.toObservable() = Observable.just(this)
 
 fun <T> Completable.map(item: () -> T) = andThen(Observable.just<T>(item.invoke()))
 
+//TODO
 fun launch(callback: () -> Unit) {
 	Completable.fromAction { callback.invoke() }
 		.subscribeOn(Schedulers.io())
-		.doOnError { it.log() }
-		.subscribe()
+		//.subscribe()
+		.subscribe({}, { it.log() })
+}
+fun launch(callback: () -> Unit, fallback: () -> Unit) {
+	Completable.fromAction { callback.invoke() }
+		.subscribeOn(Schedulers.io())
+		.subscribe({}, { fallback.invoke() })
 }

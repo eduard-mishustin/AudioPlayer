@@ -10,6 +10,7 @@ import magym.core.common.ActivityProvider
 import magym.core.common.extention.isOreoOrMore
 import magym.feature.service.AudioService
 
+
 class MainActivity : BaseActivity(), ActivityProvider {
 	
 	override var isLoading: Boolean
@@ -25,7 +26,6 @@ class MainActivity : BaseActivity(), ActivityProvider {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 	}
-	
 	
 	private companion object {
 		

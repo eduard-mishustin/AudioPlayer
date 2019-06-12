@@ -33,6 +33,7 @@ fun View.inflate(@LayoutRes resource: Int, root: ViewGroup? = null, attachToRoot
 	return context.inflate(resource, root, attachToRoot)
 }
 
+
 fun View.closeSoftKeyboard() {
 	val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
 	imm.hideSoftInputFromWindow(windowToken, 0)

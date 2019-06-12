@@ -4,6 +4,7 @@ import magym.audioplayer.navigation.Navigator
 import magym.core.common.AudioPlayerNavigation
 import magym.core.data.dataModule
 import magym.feature.audiolist.audioListModule
+import magym.feature.audiosearch.audioSearchModule
 import magym.feature.genrelist.genreListModule
 import magym.feature.genretablist.genreTabListModule
 import magym.feature.service.serviceModule
@@ -19,5 +20,6 @@ val koinModules = listOf(
 	serviceModule,
 	genreListModule,
 	genreTabListModule,
-	audioListModule
+	audioListModule,
+	audioSearchModule
 )

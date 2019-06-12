@@ -15,6 +15,7 @@ dependencies {
     implementation project(Module.featureGenreList)
     implementation project(Module.featureGenreTab)
     implementation project(Module.featureAudioList)
+    implementation project(Module.featureAudioSearch)
     implementation project(Module.featureAudioDetail)
 
     // Navigation
