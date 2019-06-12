@@ -11,7 +11,7 @@ import magym.feature.audiolist.mvi.AudioListIntent
 import magym.feature.audiolist.mvi.AudioListSubscription
 import magym.feature.audiolist.mvi.AudioListViewState
 import magym.feature.featureaudioadapter.AudioAdapter
-import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, AudioListSubscription>() {
 	
@@ -22,7 +22,7 @@ class AudioListFragment : MviFragment<AudioListIntent, AudioListViewState, Audio
 	private val adapter: AudioAdapter = AudioAdapter(::onItemClick)
 	
 	
-	override fun provideViewModel(): AudioListViewModel = get()
+	override fun provideViewModel(): AudioListViewModel = getViewModel()
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)

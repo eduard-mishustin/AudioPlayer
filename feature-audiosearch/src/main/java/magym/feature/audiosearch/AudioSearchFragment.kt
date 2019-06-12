@@ -17,7 +17,7 @@ import magym.feature.audiosearch.mvi.AudioSearchIntent
 import magym.feature.audiosearch.mvi.AudioSearchSubscription
 import magym.feature.audiosearch.mvi.AudioSearchViewState
 import magym.feature.featureaudioadapter.AudioAdapter
-import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import java.util.concurrent.TimeUnit
 
 class AudioSearchFragment : MviFragment<AudioSearchIntent, AudioSearchViewState, AudioSearchSubscription>() {
@@ -31,7 +31,7 @@ class AudioSearchFragment : MviFragment<AudioSearchIntent, AudioSearchViewState,
 	private lateinit var searchView: SearchView
 	
 	
-	override fun provideViewModel(): AudioSearchViewModel = get()
+	override fun provideViewModel(): AudioSearchViewModel = getViewModel()
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)

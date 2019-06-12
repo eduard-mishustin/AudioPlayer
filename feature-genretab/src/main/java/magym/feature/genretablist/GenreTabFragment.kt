@@ -12,7 +12,7 @@ import magym.feature.genretablist.mvi.GenreListIntent
 import magym.feature.genretablist.mvi.GenreListSubscription
 import magym.feature.genretablist.mvi.GenreListViewState
 import magym.feature.genretablist.recycler.GenreFragmentTabAdapter
-import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
 internal class GenreTabFragment :
@@ -29,7 +29,7 @@ internal class GenreTabFragment :
 	private lateinit var adapter: GenreFragmentTabAdapter
 	
 	
-	override fun provideViewModel(): GenreTabViewModel = get()
+	override fun provideViewModel(): GenreTabViewModel = getViewModel()
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)

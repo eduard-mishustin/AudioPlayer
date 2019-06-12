@@ -1,6 +1,7 @@
 import Version.kotlinVersion
 import org.gradle.api.JavaVersion
 
+// TODO: v2
 private const val koinVersion = "1.0.2"
 
 private const val appCompatVersion = "1.1.0-alpha04"
@@ -141,7 +142,6 @@ object Libraries {
 }
 
 object TestLibraries {
-	// Android test
 	const val testJunit = "junit:junit:$junitVersion"
 	const val kotlinTestJunit = "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
 	const val androidTestRunner = "androidx.test:runner:$androidTestRunnerVersion"

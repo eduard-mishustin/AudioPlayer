@@ -11,7 +11,7 @@ import magym.feature.genrelist.mvi.GenreListIntent
 import magym.feature.genrelist.mvi.GenreListSubscription
 import magym.feature.genrelist.mvi.GenreListViewState
 import magym.feature.genrelist.recycler.GenreAdapter
-import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 internal class GenreListFragment :
 	MviFragment<GenreListIntent, GenreListViewState, GenreListSubscription>() {
@@ -23,7 +23,7 @@ internal class GenreListFragment :
 	private val adapter: GenreAdapter = GenreAdapter(::onItemClick)
 	
 	
-	override fun provideViewModel(): GenreListViewModel = get()
+	override fun provideViewModel(): GenreListViewModel = getViewModel()
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
