@@ -73,6 +73,7 @@ abstract class BaseFragment : Fragment() {
 	protected fun checkArguments(vararg keys: String) {
 		keys.forEach {
 			if (argumentIsNotExist(it)) {
+				// TODO: Throw exception
 				toast("Ошибка получения данных")
 				navigator.onBackPressed()
 			}

@@ -49,14 +49,14 @@ abstract class PagedBaseAdapter<T : KeyEntity<*>, VH : BaseViewHolder<T>> :
 		private fun <T : KeyEntity<*>> getDiffItemCallback() = object : DiffUtil.ItemCallback<T>() {
 			
 			override fun areItemsTheSame(
-				oldConcert: T,
-				newConcert: T
-			) = oldConcert.id == newConcert.id
+				oldItem: T,
+				newItem: T
+			) = oldItem.id == newItem.id
 			
 			override fun areContentsTheSame(
-				oldConcert: T,
-				newConcert: T
-			) = oldConcert == newConcert
+				oldItem: T,
+				newItem: T
+			) = oldItem == newItem
 			
 		}
 		
