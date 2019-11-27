@@ -3,6 +3,7 @@ package magym.core.common.recycler.paged
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
 import androidx.paging.Config
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -18,17 +19,18 @@ abstract class PagedBaseAdapter<T : KeyEntity<*>, VH : BaseViewHolder<T>> :
 		private set
 	
 	
+	@CallSuper
 	override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
 		super.onAttachedToRecyclerView(recyclerView)
 		context = recyclerView.context
 	}
 	
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+	final override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
 		val view = parent.inflate(onLayoutRequested(viewType), parent)
 		return onCreateViewHolder(view, viewType)
 	}
 	
-	override fun onBindViewHolder(holder: VH, position: Int) {
+	final override fun onBindViewHolder(holder: VH, position: Int) {
 		getItem(position)?.let { holder.bind(it) }
 	}
 	
@@ -41,22 +43,18 @@ abstract class PagedBaseAdapter<T : KeyEntity<*>, VH : BaseViewHolder<T>> :
 	companion object {
 		
 		val defaultPagingConfig = Config(
-			pageSize = 75,
-			prefetchDistance = 140,
-			enablePlaceholders = true
+			pageSize = 75, prefetchDistance = 140, enablePlaceholders = true
 		)
 		
 		private fun <T : KeyEntity<*>> getDiffItemCallback() = object : DiffUtil.ItemCallback<T>() {
 			
 			override fun areItemsTheSame(
-				oldConcert: T,
-				newConcert: T
-			) = oldConcert.id == newConcert.id
+				oldItem: T, newItem: T
+			) = oldItem.id == newItem.id
 			
 			override fun areContentsTheSame(
-				oldConcert: T,
-				newConcert: T
-			) = oldConcert == newConcert
+				oldItem: T, newItem: T
+			) = oldItem == newItem
 			
 		}
 		

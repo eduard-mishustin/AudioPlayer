@@ -3,6 +3,7 @@ package magym.core.common.recycler.simple
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import magym.core.common.extention.inflate
@@ -27,21 +28,22 @@ abstract class BaseAdapter<T : KeyEntity<*>, VH : BaseViewHolder<T>>
 		private set
 	
 	
+	@CallSuper
 	override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
 		super.onAttachedToRecyclerView(recyclerView)
 		context = recyclerView.context
 	}
 	
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+	final override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
 		val view = parent.inflate(onLayoutRequested(viewType), parent)
 		return onCreateViewHolder(view, viewType)
 	}
 	
-	override fun getItemCount() = items.size
+	final override fun getItemCount() = items.size
 	
-	override fun getItemId(position: Int) = items[position].id.hashCode().toLong()
+	final override fun getItemId(position: Int) = items[position].id.hashCode().toLong()
 	
-	override fun onBindViewHolder(holder: VH, position: Int) = holder.bind(items[position])
+	final override fun onBindViewHolder(holder: VH, position: Int) = holder.bind(items[position])
 	
 	
 	abstract fun onLayoutRequested(viewType: Int): Int

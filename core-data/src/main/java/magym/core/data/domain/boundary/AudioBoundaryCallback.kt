@@ -32,7 +32,7 @@ internal class AudioBoundaryCallback(
 	private fun loadData() {
 		launch {
 			val audios =
-				if (filterQuery.isEmpty()) (parser.getAudios(genreId, lastIndex))
+				if (filterQuery.isEmpty()) parser.getAudios(genreId, lastIndex)
 				else parser.searchAudios(filterQuery, lastIndex)
 			
 			val keys = audios.map { AudioGenre("${genreId}_${it.id}", it.id, genreId) }
@@ -43,7 +43,9 @@ internal class AudioBoundaryCallback(
 	}
 	
 	private companion object {
+		
 		private const val COUNT_VIDEOS_ON_PAGE = 48
+		
 	}
 	
 }

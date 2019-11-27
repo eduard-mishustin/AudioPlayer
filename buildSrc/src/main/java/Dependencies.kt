@@ -9,7 +9,7 @@ private const val coreKtxVersion = "1.0.2"
 private const val materialVersion = "1.1.0-alpha05"
 private const val constraintLayoutVersion = "1.1.3"
 private const val recyclerVersion = "1.0.0"
-private const val viewpager2Version = "1.0.0-alpha04"
+private const val viewpager2Version = "1.0.0-rc01"
 private const val pagingVersion = "2.1.0"
 private const val glideVersion = "4.9.0"
 private const val navigationVersion = "2.1.0-alpha02"
@@ -91,7 +91,8 @@ object Libraries {
 	
 	// UI
 	const val material = "com.google.android.material:material:$materialVersion"
-	const val constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+	const val constraintLayout =
+		"androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 	const val recycler = "androidx.recyclerview:recyclerview:$recyclerVersion"
 	const val viewpager2 = "androidx.viewpager2:viewpager2:$viewpager2Version"
 	const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
@@ -112,7 +113,8 @@ object Libraries {
 	const val jsoup = "org.jsoup:jsoup:$jsoupVersion"
 	const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
 	const val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitRxAdapterVersion"
-	const val retrofitXmlConverter = "com.squareup.retrofit2:converter-simplexml:$retrofitXmlConverterVersion"
+	const val retrofitXmlConverter =
+		"com.squareup.retrofit2:converter-simplexml:$retrofitXmlConverterVersion"
 	const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 	
 	// Rx
@@ -120,7 +122,8 @@ object Libraries {
 	const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
 	const val rxAndroid = "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
 	const val rxBinding = "com.jakewharton.rxbinding3:rxbinding:$rxBindingVersion"
-	const val rxBindingAppcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxBindingVersion"
+	const val rxBindingAppcompat =
+		"com.jakewharton.rxbinding3:rxbinding-appcompat:$rxBindingVersion"
 	
 	// Database
 	const val room = "android.arch.persistence.room:runtime:$roomVersion"

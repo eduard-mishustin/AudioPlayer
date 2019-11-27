@@ -5,8 +5,8 @@ apply plugin: 'kotlin-kapt'
 
 android {
     defaultConfig {
-        buildConfigField "String", "BASE_URL", "\"https://muzlo.me/\""
-        buildConfigField "String", "SHORT_BASE_URL", "\"https://muzlo.me\""
+        buildConfigField "String", "BASE_URL", "\"https://hitmo.org/\""
+        buildConfigField "String", "SHORT_BASE_URL", "\"https://hitmo.org\""
     }
 }
 
